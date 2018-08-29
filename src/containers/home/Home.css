@@ -1,0 +1,10 @@
+.Video span{
+    display: block;
+    width: 100vw;
+    height: 60vh;
+}
+
+.Video span iframe {
+    display: block;
+    margin: auto;
+}
