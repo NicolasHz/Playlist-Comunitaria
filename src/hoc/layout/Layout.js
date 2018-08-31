@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import * as classes from './Layout.css';
-declare var classie;
+import VideoList from '../../components/VideoList/VideoList';
+
+
 class Layout extends Component {
 
     state = {
+        currentVideoURL: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         perspectiveClasses: [classes.Perspective, classes.EffectRotateLeft]
     }
     
@@ -49,6 +52,9 @@ class Layout extends Component {
                         </div>
                     </div>
                 </div>
+                <nav className={[classes.OuterNav, classes.vertical].join(' ')} style={{right: '3%'}}>
+                    <VideoList currentVideoURL={this.state.currentVideoURL}/>
+                </nav>
             </div>
         )
     }

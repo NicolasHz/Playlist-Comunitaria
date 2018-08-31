@@ -1,10 +1,16 @@
+.Video {
+    margin-top: 63px;
+}
+
 .Video span{
     display: block;
     width: 100vw;
-    height: 60vh;
+    height: auto;
 }
 
 .Video span iframe {
     display: block;
     margin: auto;
+    width: 80vw;
+    height: calc(80vw / (16/9));
 }

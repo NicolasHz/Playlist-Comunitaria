@@ -22,6 +22,8 @@ html, body, Perspective {
 }
 
 .ShowMenu {
+    position: absolute;
+    right: 2%;
     width: 8em;
     height: 3em;
     border: none;
@@ -48,8 +50,9 @@ html, body, Perspective {
 }
 
 .Container {
-	background: #fff;
-	min-height: 100%;
+	/* background: #fff; */
+    background: #000000;
+    min-height: 100%;
 	position: relative;
 	outline: 1px solid rgba(0,0,0,0);
 	z-index: 10;
@@ -110,7 +113,7 @@ html, body, Perspective {
 }
 
 .EffectRotateLeft .Container::after {
-	background: rgba(255,255,255,0.6);
+	background: rgba(255,255,255,0.2);
 }
 
 .EffectRotateLeft.animate .Container {
@@ -122,7 +125,37 @@ html, body, Perspective {
 	left: -75%;
 }
 
-.EffectRotateLeft .outer-nav a {
+.OuterNav {
+	position: absolute;
+	height: auto;
+    font-size: 2em;
+    max-width: 40vw;
+}
+
+.OuterNav.vertical {
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+.OuterNav.left {
+	left: 25%;
+}
+
+.OuterNav.right {
+	right: 25%;
+}
+
+.OuterNav.top {
+	top: 25%;
+}
+
+.OuterNav.bottom {
+	bottom: 25%;
+}
+
+.EffectRotateLeft .OuterNav span {
 	opacity: 0;
 	-webkit-transform: translateX(350px) translateZ(-1000px);
 	transform: translateX(350px) translateZ(-1000px);
@@ -130,38 +163,38 @@ html, body, Perspective {
 	transition: transform 0.4s, opacity 0.4s;
 }
 
-.EffectRotateLeft.animate .outer-nav a {
+.EffectRotateLeft.animate .OuterNav span {
 	opacity: 1;
 	-webkit-transform: translateX(0) translateZ(0);
 	transform: translateX(0) translateZ(0);
 }
 
-.EffectRotateLeft.animate .outer-nav a:nth-child(2) {
+.EffectRotateLeft.animate .OuterNav span:nth-child(2) {
 	-webkit-transition-delay: 0.04s;
 	transition-delay: 0.04s;
 }
 
-.EffectRotateLeft.animate .outer-nav a:nth-child(3) {
+.EffectRotateLeft.animate .OuterNav span:nth-child(3) {
 	-webkit-transition-delay: 0.08s;
 	transition-delay: 0.08s;
 }
 
-.EffectRotateLeft.animate .outer-nav a:nth-child(4) {
+.EffectRotateLeft.animate .OuterNav span:nth-child(4) {
 	-webkit-transition-delay: 0.08s;
 	transition-delay: 0.08s;
 }
 
-.EffectRotateLeft.animate .outer-nav a:nth-child(5) {
+.EffectRotateLeft.animate .OuterNav span:nth-child(5) {
 	-webkit-transition-delay: 0.16s;
 	transition-delay: 0.16s;
 }
 
-.EffectRotateLeft.animate .outer-nav a:nth-child(6) {
+.EffectRotateLeft.animate .OuterNav span:nth-child(6) {
 	-webkit-transition-delay: 0.2s;
 	transition-delay: 0.2s;
 }
 
-.EffectRotateLeft.animate .outer-nav a:nth-child(7) {
+.EffectRotateLeft.animate .OuterNav span:nth-child(7) {
 	-webkit-transition-delay: 0.24s;
 	transition-delay: 0.24s;
 }
