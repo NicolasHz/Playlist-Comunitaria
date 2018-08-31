@@ -130,6 +130,7 @@ html, body, Perspective {
 	height: auto;
     font-size: 2em;
     max-width: 40vw;
+    overflow: hidden;
 }
 
 .OuterNav.vertical {
@@ -161,7 +162,6 @@ html, body, Perspective {
 	transform: translateX(350px) translateZ(-1000px);
 	-webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
     transition: transform 0.4s, opacity 0.4s;
-    overflow: hidden;
 }
 
 .EffectRotateLeft.animate .OuterNav span {
