@@ -18,13 +18,14 @@
 }
 
 .VideoListItem .ThumbNail {
-    background: url('//img.youtube.com/vi/dQw4w9WgXcQ/0.jpg') no-repeat;
+    background-repeat: no-repeat;
     width: 12vh;
     height: 12vh;
     background-size: contain;
     background-position: center;
     display: inline-block;
     vertical-align: middle;
+    margin: 0 5px;
 }
 
 .VideoListItem .Description {

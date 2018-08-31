@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/ActionTypes.actions';
 import { updateObject } from '../../shared/utility';
 
 const initialState = {
-    currentVideoURL: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+    currentVideoURL: 'https://www.youtube.com/watch?v=2X6bc-7DsVU'
 }
 
 const reducer = ( state = initialState, action ) => {

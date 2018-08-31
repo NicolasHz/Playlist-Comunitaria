@@ -4,8 +4,10 @@ import { updateObject } from '../../shared/utility';
 const initialState = {
     error: null,
     playlist: [],
-    playlistAuthor: '',
-
+    playlistAuthor: {
+        name: '',
+        id: ''
+    },
 }
 
 const reducer = ( state = initialState, action ) => {

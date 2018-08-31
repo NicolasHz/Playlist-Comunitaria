@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import * as classes from './Layout.css';
 import VideoList from '../../components/VideoList/VideoList';
-
+import { getUserIP } from '../../shared/utility';
 
 class Layout extends Component {
 
     state = {
-        currentVideoURL: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         perspectiveClasses: [classes.Perspective, classes.EffectRotateLeft]
     }
     
     showMenuHandler = (event) => {
+        getUserIP(ip => console.log(ip));
         const updatedPerspectiveClasses = this.state.perspectiveClasses.slice();
         event.stopPropagation();
         event.preventDefault();
@@ -18,6 +19,7 @@ class Layout extends Component {
         this.setState({perspectiveClasses: updatedPerspectiveClasses})
         updatedPerspectiveClasses.push(classes.animate);
         this.setState({perspectiveClasses: updatedPerspectiveClasses});
+
     }
 
     hideMenuHandler = (event) => {
@@ -53,11 +55,18 @@ class Layout extends Component {
                     </div>
                 </div>
                 <nav className={[classes.OuterNav, classes.vertical].join(' ')} style={{right: '3%'}}>
-                    <VideoList currentVideoURL={this.state.currentVideoURL}/>
+                    <VideoList currentVideoURL={this.props.currentVideoURL}/>
                 </nav>
             </div>
         )
     }
 }
 
-export default Layout;
+const mapStateToProps = state => {
+    return {
+        currentVideoURL: state.video.currentVideoURL
+    }
+};
+
+
+export default connect(mapStateToProps, null)(Layout);

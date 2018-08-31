@@ -1,11 +1,8 @@
 import React, { PureComponent } from 'react';
 import Video from '../../components/Video/Video';
+import { connect } from 'react-redux';
 
 class Home extends PureComponent {
-    
-    state = {
-        currentVideoURL: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-    }
 
     getYutubeOpt = () => {
         return {
@@ -25,9 +22,15 @@ class Home extends PureComponent {
     
     render() {
         return (
-            <Video youtubeOpts={this.getYutubeOpt()} currentVideoURL={this.state.currentVideoURL}/>
+            <Video youtubeOpts={this.getYutubeOpt()} currentVideoURL={this.props.currentVideoURL}/>
         )
     }
 }
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        currentVideoURL: state.video.currentVideoURL
+    }
+};
+
+export default connect(mapStateToProps, null)(Home);
