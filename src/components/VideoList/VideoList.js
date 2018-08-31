@@ -9,7 +9,7 @@ const youtubeParser = (url) => {
 
 const videoList = (props) => {
     return (
-        <div>
+        <div style={{textAlign: 'center'}}>
         <VideoListItem currentVideoURL={youtubeParser(props.currentVideoURL)}/>
         <VideoListItem currentVideoURL={youtubeParser(props.currentVideoURL)}/>
         <VideoListItem currentVideoURL={youtubeParser(props.currentVideoURL)}/>

@@ -160,7 +160,8 @@ html, body, Perspective {
 	-webkit-transform: translateX(350px) translateZ(-1000px);
 	transform: translateX(350px) translateZ(-1000px);
 	-webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
-	transition: transform 0.4s, opacity 0.4s;
+    transition: transform 0.4s, opacity 0.4s;
+    overflow: hidden;
 }
 
 .EffectRotateLeft.animate .OuterNav span {
