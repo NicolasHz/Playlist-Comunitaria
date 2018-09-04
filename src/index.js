@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import createSagaMiddleware from "redux-saga";
-import { playlist } from "./store/sagas";
+// import { playlist } from "./store/sagas";
 import PlayListReducer from "./store/reducers/PlayList.reducer";
 import videoReducer from "./store/reducers/Video.reducer";
 
@@ -26,11 +27,12 @@ const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(sagaMiddleware)
 ));
 
-sagaMiddleware.run(playlist);
 
 const app = (
     <Provider store={store}>
-        <App />
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </Provider>);
 
 ReactDOM.render(app, document.getElementById('root'));

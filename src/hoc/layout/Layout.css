@@ -12,7 +12,6 @@ html, body, Perspective {
 
 .Perspective.Modalview {
     position: fixed;
-    -webkit-perspective: 1500px;
     perspective: 1500px;
 }
 
@@ -56,7 +55,6 @@ html, body, Perspective {
 	position: relative;
 	outline: 1px solid rgba(0,0,0,0);
 	z-index: 10;
-	-webkit-transform: translateZ(0) translateX(0) rotateY(0deg); /* reset transforms (Chrome bug) */
 	transform: translateZ(0) translateX(0) rotateY(0deg);
 }
 
@@ -70,7 +68,6 @@ html, body, Perspective {
 	opacity: 0;
 	background: rgba(0,0,0,0.2);
 	/* the transition delay of the height needs to be synced with the container transition time */
-	-webkit-transition: opacity 0.4s, height 0s 0.4s;
 	transition: opacity 0.4s, height 0s 0.4s;
 }
 
@@ -95,7 +92,6 @@ html, body, Perspective {
 .animate .Container::after {
 	opacity: 1;
 	height: 101%;
-	-webkit-transition: opacity 0.3s;
 	transition: opacity 0.3s;
 }
 
@@ -106,9 +102,7 @@ html, body, Perspective {
 }
 
 .EffectRotateLeft .Container {
-	-webkit-transition: -webkit-transform 0.4s;
 	transition: transform 0.4s;
-	-webkit-transform-origin: 0% 50%;
 	transform-origin: 0% 50%;
 }
 
@@ -117,7 +111,6 @@ html, body, Perspective {
 }
 
 .EffectRotateLeft.animate .Container {
-	-webkit-transform: translateZ(-1800px) translateX(-50%) rotateY(45deg);
 	transform: translateZ(-1800px) translateX(-50%) rotateY(45deg);
 }
 
@@ -135,9 +128,7 @@ html, body, Perspective {
 
 .OuterNav.vertical {
 	top: 50%;
-	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
-	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 }
 .OuterNav.left {
@@ -158,44 +149,36 @@ html, body, Perspective {
 
 .EffectRotateLeft .OuterNav span {
 	opacity: 0;
-	-webkit-transform: translateX(350px) translateZ(-1000px);
+	cursor: pointer;
 	transform: translateX(350px) translateZ(-1000px);
-	-webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
-    transition: transform 0.4s, opacity 0.4s;
+    transition: transform all 0.4s, opacity 0.4s;
 }
 
 .EffectRotateLeft.animate .OuterNav span {
 	opacity: 1;
-	-webkit-transform: translateX(0) translateZ(0);
 	transform: translateX(0) translateZ(0);
 }
 
 .EffectRotateLeft.animate .OuterNav span:nth-child(2) {
-	-webkit-transition-delay: 0.04s;
 	transition-delay: 0.04s;
 }
 
 .EffectRotateLeft.animate .OuterNav span:nth-child(3) {
-	-webkit-transition-delay: 0.08s;
 	transition-delay: 0.08s;
 }
 
 .EffectRotateLeft.animate .OuterNav span:nth-child(4) {
-	-webkit-transition-delay: 0.08s;
 	transition-delay: 0.08s;
 }
 
 .EffectRotateLeft.animate .OuterNav span:nth-child(5) {
-	-webkit-transition-delay: 0.16s;
 	transition-delay: 0.16s;
 }
 
 .EffectRotateLeft.animate .OuterNav span:nth-child(6) {
-	-webkit-transition-delay: 0.2s;
 	transition-delay: 0.2s;
 }
 
 .EffectRotateLeft.animate .OuterNav span:nth-child(7) {
-	-webkit-transition-delay: 0.24s;
 	transition-delay: 0.24s;
 }

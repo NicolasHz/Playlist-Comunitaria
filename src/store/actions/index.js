@@ -1,13 +1,11 @@
 export { 
-    getPlayList,
-    getPlayListSuccess,
-    getPlayListFail,
-    addToPlayist,
-    addToPlayistSuccess,
-    addToPlayistFail,
-    removeFromPlaylist,
-    removeFromPlaylistSuccess,
-    removeFromPlaylistFail
+    setPlayList,
+    addToPlayList,
+    addToPlayListSuccess,
+    addToPlayListFail,
+    removeFromPlayList,
+    removeFromPlayListSuccess,
+    removeFromPlayListFail
  } from "./Playlist.actions";
 export { 
     setCurrentVideo

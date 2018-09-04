@@ -1,13 +1,9 @@
 import React from 'react';
 import YouTube from 'react-youtube';
 import * as classes from './Video.css';
-const video = (props) => {
+import {youtubeParser} from '../../shared/utility'
 
-    const youtubeParser = (url) => {
-        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-        const match = url.match(regExp);
-        return (match&&match[7].length===11)? match[7] : false;
-    }
+const video = (props) => {
     return (
         <div className={classes.Video} >
         <YouTube
@@ -18,5 +14,7 @@ const video = (props) => {
         </div>
     )
 }
+
+//usar esto para agarrar la data "http://www.youtube.com/oembed?url=". $url ."&format=json"
 
 export default video;

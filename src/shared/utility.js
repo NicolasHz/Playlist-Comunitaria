@@ -5,6 +5,12 @@ export const updateObject = (oldObject, updatedProperties) => {
     };
 };
 
+export const youtubeParser = (url) => {
+    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match&&match[7].length===11)? match[7] : false;
+}
+
 export const getUserIP = (onNewIP) => { //  onNewIp - your listener function for new IPs
     //compatibility for firefox and chrome
     var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;

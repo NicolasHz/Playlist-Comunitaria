@@ -1,61 +1,47 @@
 import * as actionTypes from "./ActionTypes.actions";
 
-export const getPlayList = ( playListURLToAdd ) => {
+export const setPlayList = ( payload ) => {
     return {
-        type: actionTypes.GET_PLAYLIST,
-        playListURL: playListURLToAdd
+        type: actionTypes.SET_PLAYLIST,
+        payload: payload
     };
 };
 
-export const getPlayListSuccess = ( playListArray ) => {
-    return {
-        type: actionTypes.GET_PLAYLIST_SUCCESS,
-        playList: playListArray
-    };
-};
-
-export const getPlayListFail = () => {
-    return {
-        type: actionTypes.GET_PLAYLIST_FAIL
-    };
-};
-
-
-export const addToPlayist = ( videoURLToAdd ) => {
+export const addToPlayList = ( videoURLToAdd ) => {
     return {
         type: actionTypes.ADD_TO_PLAYLIST,
         videoURLAdd: videoURLToAdd
     };
 };
 
-export const addToPlayistSuccess = ( playListArray ) => {
+export const addToPlayListSuccess = ( playListArray ) => {
     return {
         type: actionTypes.ADD_TO_PLAYLIST_SUCCESS,
-        playList: playListArray
+        payload: playListArray
     };
 };
 
-export const addToPlayistFail = () => {
+export const addToPlayListFail = () => {
     return {
         type: actionTypes.ADD_TO_PLAYLIST_FAIL
     };
 };
 
-export const removeFromPlaylist = ( videoURLToRemove ) => {
+export const removeFromPlayList = ( videoURLToRemove ) => {
     return {
         type: actionTypes.REMOVE_FROM_PLAYLIST,
         videoURLRemove: videoURLToRemove
     };
 };
 
-export const removeFromPlaylistSuccess = ( playListArray ) => {
+export const removeFromPlayListSuccess = ( playListArray ) => {
     return {
         type: actionTypes.REMOVE_FROM_PLAYLIST_SUCCESS,
         playList: playListArray
     };
 };
 
-export const removeFromPlaylistFail = () => {
+export const removeFromPlayListFail = () => {
     return {
         type: actionTypes.REMOVE_FROM_PLAYLIST_FAIL
     };
