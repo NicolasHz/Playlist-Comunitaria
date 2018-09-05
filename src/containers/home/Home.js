@@ -81,7 +81,7 @@ class Home extends Component {
                         touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
-                <button>Create</button>
+                <button disabled={!this.state.formIsValid}>Create</button>
             </form>
         );
         return (
