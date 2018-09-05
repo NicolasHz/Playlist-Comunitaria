@@ -87,7 +87,8 @@ class Home extends Component {
         return (
             <Auxiliar>
                 <canvas id="canvas"></canvas>
-                <div id="Home" className={classes.Home}>
+                <div  id="Home" style={{backgroundColor: 'black'}}/>
+                <div className={classes.Home}>
                     <h2 className={classes.Title}>Create your PlayList!</h2>
                     {form}
                 </div>
