@@ -20,7 +20,7 @@ html, body, Perspective {
     justify-content: flex-end;
 }
 
-.ShowMenu {
+.ShowMenuButton {
     position: absolute;
     right: 2%;
     width: 8em;
@@ -43,8 +43,8 @@ html, body, Perspective {
 	background: #ed8151;
 }
 
-.ShowMenu:hover,
-.ShowMenu:active {
+.ShowMenuButton:hover,
+.ShowMenuButton:active {
 	background: #e86a32;
 }
 
@@ -73,6 +73,7 @@ html, body, Perspective {
 
 .Wrapper {
 	position: relative;
+	height: 100vh;
 }
 
 .Modalview .Container {
@@ -94,8 +95,6 @@ html, body, Perspective {
 	height: 101%;
 	transition: opacity 0.3s;
 }
-
-
 
 .EffectRotateLeft {
 	background: #e96e4f;

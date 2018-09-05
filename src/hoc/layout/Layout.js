@@ -49,11 +49,9 @@ class Layout extends Component {
                 <div className={classes.Container} onClick={this.hideMenuHandler}>
                     <div className={classes.Wrapper} style={{ top: 0 }}>
                         <div className={classes.MenuButtonWrapper}>
-                            <button className={classes.ShowMenu} onClick={this.showMenuHandler} id="showMenu">View List</button>
+                            <button className={classes.ShowMenuButton} onClick={this.showMenuHandler} id="showMenu">View List</button>
                         </div>
-                        <div>
-                            {this.props.children}
-                        </div>
+                    {this.props.children}
                     </div>
                 </div>
                 <nav className={[classes.OuterNav, classes.vertical].join(' ')} style={{ right: '3%' }}>

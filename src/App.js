@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+// Containers
 import Layout from './hoc/layout/Layout';
 import Reproducer from './containers/reproducer/Reproducer';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import Home from './containers/home/Home'
 // Firebase
 import firebase from 'firebase';
 import firebaseConfig from './firebase-config/config';
@@ -35,11 +37,12 @@ class App extends Component {
   };
 
   render() {
-    const redirect = (this.props.location.pathname === '/'? null : <Redirect to="/" />)
+    const redirect = (this.props.location.pathname === '/home'? null : <Redirect to="/home" />)
     return (
       <Layout>
         <Switch>
           <Route path="/playlist/:playListID" exact component={Reproducer} />
+          <Route path="/home" exact component={Home} />
           {redirect}
         </Switch>
       </Layout>

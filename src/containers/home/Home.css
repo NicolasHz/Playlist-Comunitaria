@@ -1,0 +1,57 @@
+.Home {
+    background-color: black;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    top: 15vh;
+}
+
+canvas {
+    width: 100vw;
+    bottom: 0;
+    position: absolute;
+}
+
+.Home .Title {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.Home form {
+    margin: 0 10%;
+}
+
+form button {
+    width: 8em;
+    height: 3em;
+    border: none;
+    padding: 0.6em 1.2em;
+    background: #a9a9a9;
+    color: #fff;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-size: 1em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: block;
+    margin: 5px auto;
+    border-radius: 2px;
+    font-weight: 400;
+    outline: none;
+    font-size: 75%;
+    background: #ed8151;
+}
+
+form button:hover,
+form button:active {
+	background: #e86a32;
+}
+
+@media screen and (min-width: 800px) {
+    .Home form {
+        margin: 0 32%;
+    }
+}
