@@ -17,7 +17,7 @@ export function* createPlayListSaga(action) {
     try {
         let success = false;
         yield FireApp.database().ref(action.playListName).set({
-            playlistAuthor: action.author
+            playListAuthor: action.author
         }, (error) => {
             if (!error) {
                 success = true

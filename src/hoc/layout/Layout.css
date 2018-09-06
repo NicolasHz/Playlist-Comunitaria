@@ -126,6 +126,10 @@ html, body, Perspective {
     overflow: hidden;
 }
 
+.blur {
+	filter: blur(3px);
+}
+
 .OuterNav.vertical {
 	top: 50%;
 	transform: translateY(-50%);

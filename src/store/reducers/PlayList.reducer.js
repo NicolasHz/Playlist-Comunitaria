@@ -13,6 +13,22 @@ const initialState = {
                 name: 'Nicolas',
                 id: 123543
             }
+        },
+        {
+            videoURL: 'https://www.youtube.com/watch?v=BlXiKihALys',
+            title: 'Don Diablo | Tomorrowland Belgium 2018 W2',
+            author: {
+                name: 'Nicolas',
+                id: 123543
+            }
+        },
+        {
+            videoURL: 'https://www.youtube.com/watch?v=2X6bc-7DsVU&t',
+            title: 'Tiësto - Live @ Ultra Music Festival Miami 2017',
+            author: {
+                name: 'Nicolas',
+                id: 123543
+            }
         }
     ],
     playlistAuthor: {

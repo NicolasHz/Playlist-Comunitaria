@@ -44,6 +44,12 @@ class Layout extends Component {
     }
 
     render() {
+        const videoClasses = !this.props.currentVideoURL ? classes.blur : null;
+        const indicator = !this.props.currentVideoURL ? (
+            <div>
+                <p style={{fontSize:22}}>Here you'll see the actual songs once you start adding them...</p>
+            </div>
+        ) : null;
         return (
             <div id="perspective" className={this.state.perspectiveClasses.join(' ')}>
                 <div className={classes.Container} onClick={this.hideMenuHandler}>
@@ -51,11 +57,14 @@ class Layout extends Component {
                         <div className={classes.MenuButtonWrapper}>
                             <button className={classes.ShowMenuButton} onClick={this.showMenuHandler} id="showMenu">View List</button>
                         </div>
-                    {this.props.children}
+                        {this.props.children}
                     </div>
                 </div>
                 <nav className={[classes.OuterNav, classes.vertical].join(' ')} style={{ right: '3%' }}>
-                    <VideoList playList={this.props.playList} />
+                    {indicator}
+                    <div className={videoClasses}>
+                        <VideoList playList={this.props.playList} />
+                    </div>
                 </nav>
             </div>
         )
@@ -64,7 +73,8 @@ class Layout extends Component {
 
 const mapStateToProps = state => {
     return {
-        playList: state.playList.playList
+        playList: state.playList.playList,
+        currentVideoURL: state.video.currentVideoURL
     }
 };
 
