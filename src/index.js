@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import createSagaMiddleware from "redux-saga";
-// import { playlist } from "./store/sagas";
+import { createPlayList } from "./store/sagas";
 import PlayListReducer from "./store/reducers/PlayList.reducer";
 import videoReducer from "./store/reducers/Video.reducer";
 
@@ -23,10 +23,12 @@ const rootReducer = combineReducers({
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(rootReducer, composeEnhancers(
-    applyMiddleware(sagaMiddleware)
-));
+const store = createStore(
+    rootReducer,
+    composeEnhancers(applyMiddleware(sagaMiddleware))
+);
 
+sagaMiddleware.run(createPlayList);
 
 const app = (
     <Provider store={store}>

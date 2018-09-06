@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 const firebaseConfig = {
     apiKey: "AIzaSyDO6kwpYCZ9jmFgqIlLUzK6_yp-8pdJqYE",
     authDomain: "playlist-comunitaria.firebaseapp.com",
@@ -6,4 +7,5 @@ const firebaseConfig = {
     storageBucket: "playlist-comunitaria.appspot.com",
     messagingSenderId: "632269749833"
   };
-export default firebaseConfig; 
+
+export default firebase.initializeApp(firebaseConfig);

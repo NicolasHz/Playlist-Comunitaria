@@ -30,8 +30,22 @@ const setPlayList = (state, action) => {
      return updateObject( state, updatedPlayList );
 }
 
+const createPlayListSuccess = (state, action) => {
+
+    console.log(state, action)
+    return state;
+    // const updatedPlayList = {
+    //     error: null,
+    //     playList: action.payload.playList,
+    //     playlistAuthor: action.payload.playListAuthor,
+    //  }
+    //  return updateObject( state, updatedPlayList );
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.CREATE_PLAYLIST_SUCCESS:
+            return createPlayListSuccess( state, action );
         case actionTypes.SET_PLAYLIST:
             return setPlayList( state, action );
         case actionTypes.ADD_TO_PLAYLIST_SUCCESS:

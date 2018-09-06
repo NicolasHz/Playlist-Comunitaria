@@ -1,5 +1,26 @@
 import * as actionTypes from "./ActionTypes.actions";
 
+export const createPlayList = ( payload ) => {
+    return {
+        type: actionTypes.CREATE_PLAYLIST,
+        playListName: payload.playListName,
+        author: payload.author
+    };
+};
+
+export const createPlayListSuccess = ( playListName ) => {
+    return {
+        type: actionTypes.CREATE_PLAYLIST_SUCCESS,
+        playListName: playListName
+    };
+};
+
+export const createPlayListFail = () => {
+    return {
+        type: actionTypes.CREATE_PLAYLIST_FAIL,
+    };
+};
+
 export const setPlayList = ( payload ) => {
     return {
         type: actionTypes.SET_PLAYLIST,

@@ -1,7 +1,6 @@
-import { put } from "redux-saga/effects";
-
-import axios from "../../../axiosPlayList";
+import {put} from "redux-saga/effects";
 import * as actions from "../../actions";
+import FireApp from '../../../firebase-config/config';
 
 // export function* setPlayListSaga(action) {
 //   try {
@@ -13,3 +12,22 @@ import * as actions from "../../actions";
 //     yield put(actions.getPlayListFail());
 //   }
 // }
+
+export function* createPlayListSaga(action) {
+    try {
+        let success = false;
+        yield FireApp.database().ref(action.playListName).set({
+            playlistAuthor: action.author
+        }, (error) => {
+            if (!error) {
+                success = true
+            }
+        });
+        if (success) {
+            yield put(actions.createPlayListSuccess(action.playListName));
+        }
+    } catch (error) {
+        yield put(actions.createPlayListFail());
+    }
+
+}

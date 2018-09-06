@@ -5,26 +5,19 @@ import Layout from './hoc/layout/Layout';
 import Reproducer from './containers/reproducer/Reproducer';
 import Home from './containers/home/Home'
 // Firebase
-import firebase from 'firebase';
-import firebaseConfig from './firebase-config/config';
+// import firebase from 'firebase';
+import FireApp from './firebase-config/config';
 // Redux
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
-// Utility
-import { getUserIP } from './shared/utility';
+
 
 class App extends Component {
-
-  constructor() {
-    super();
-    getUserIP(ip => console.log(ip));
-    this.app = firebase.initializeApp(firebaseConfig)
-  }
 
   componentDidMount() {
     const currentURL = this.props.location.pathname.split('/')[2];
     if (currentURL) {
-      this.database = this.app.database().ref().child(currentURL);
+      this.database = FireApp.database().ref().child(currentURL);
       this.database.on('value', snap => {
         if(snap.val()) {
           this.props.onSetPlayList(snap.val());
@@ -53,7 +46,8 @@ class App extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     onSetPlayList: (playlist) => dispatch(actions.setPlayList(playlist)),
-    onSetCurrentVideoURL: (videoURL) => dispatch(actions.setCurrentVideo(videoURL))
+    onSetCurrentVideoURL: (videoURL) => dispatch(actions.setCurrentVideo(videoURL)),
+    onCreatePlaylist: (playListName) => dispatch(actions.createPlayList(playListName))
   }
 }
 

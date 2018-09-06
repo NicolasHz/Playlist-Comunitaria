@@ -1,75 +1,101 @@
 import React, { Component } from 'react';
-import Input from '../../components/UI/Input/Input'
 import * as classes from './Home.css'
+import Input from '../../components/UI/Input/Input'
 import { updateObject, checkValidity } from '../../shared/utility';
 import Auxiliar from '../../hoc/Auxiliar/Auxiliar'
 import * as Waves from '../../components/UI/Wave/Wave'
+// Redux
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
+// Utility
+import { getUserIP } from '../../shared/utility';
 class Home extends Component {
 
-    state = {
-        orderForm: {
-            playListName: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Playlist Name'
+    constructor() {
+        super();
+        getUserIP(ip => {
+            this.setState({authorId: ip});
+        });
+        this.state = {
+            authorId: null,
+            playListForm: {
+                playListName: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'Playlist Name'
+                    },
+                    value: '',
+                    validation: {
+                        required: true
+                    },
+                    valid: false,
+                    touched: false
                 },
-                value: '',
-                validation: {
-                    required: true
-                },
-                valid: false,
-                touched: false
+                authorName: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'Your Name'
+                    },
+                    value: '',
+                    validation: {
+                        required: true
+                    },
+                    valid: false,
+                    touched: false
+                }
             },
-            authorName: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Your Name'
-                },
-                value: '',
-                validation: {
-                    required: true
-                },
-                valid: false,
-                touched: false
-            }
-        },
-        formIsValid: false
+            formIsValid: false
+        }
     }
 
     inputChangedHandler = (event, inputIdentifier) => {
-        
-        const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier], {
+
+        const updatedFormElement = updateObject(this.state.playListForm[inputIdentifier], {
             value: event.target.value,
-            valid: checkValidity(event.target.value, this.state.orderForm[inputIdentifier].validation),
+            valid: checkValidity(event.target.value, this.state.playListForm[inputIdentifier].validation),
             touched: true
         });
-        const updatedOrderForm = updateObject(this.state.orderForm, {
+        const updatedPlayListForm = updateObject(this.state.playListForm, {
             [inputIdentifier]: updatedFormElement
         });
-        
+
         let formIsValid = true;
-        for (let inputIdentifier in updatedOrderForm) {
-            formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+        for (let inputIdentifier in updatedPlayListForm) {
+            formIsValid = updatedPlayListForm[inputIdentifier].valid && formIsValid;
         }
-        this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
+        this.setState({ playListForm: updatedPlayListForm, formIsValid: formIsValid });
     }
 
-    componentDidMount(){
+    onCreatePlayListHandler = (event) => {
+        event.preventDefault();
+
+        const playListToCreate = {
+            playListName: this.state.playListForm.playListName.value,
+            author: {
+                name: this.state.playListForm.authorName.value,
+                id: this.state.authorId
+            }
+        }
+        console.log(playListToCreate)
+        this.props.onCreatePlaylist(playListToCreate)
+    }
+
+    componentDidMount() {
         Waves.init();
     }
 
     render() {
         const formElementsArray = [];
-        for (let key in this.state.orderForm) {
+        for (let key in this.state.playListForm) {
             formElementsArray.push({
                 id: key,
-                config: this.state.orderForm[key]
+                config: this.state.playListForm[key]
             });
         }
         let form = (
-            <form onSubmit={this.orderHandler}>
+            <form onSubmit={this.onCreatePlayListHandler}>
                 {formElementsArray.map(formElement => (
                     <Input
                         key={formElement.id}
@@ -81,13 +107,13 @@ class Home extends Component {
                         touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
-                <button disabled={!this.state.formIsValid}>Create</button>
+                <button onClick={this.onCreatePlayListHandler} disabled={!this.state.formIsValid}>Create</button>
             </form>
         );
         return (
             <Auxiliar>
                 <canvas id="canvas"></canvas>
-                <div  id="Home" style={{backgroundColor: 'black'}}/>
+                <div id="Home" style={{ backgroundColor: 'black' }} />
                 <div className={classes.Home}>
                     <h2 className={classes.Title}>Create your PlayList!</h2>
                     {form}
@@ -97,4 +123,10 @@ class Home extends Component {
     }
 }
 
-export default Home
+const mapDispatchToProps = dispatch => {
+    return {
+        onCreatePlaylist: (playListToCreate) => dispatch(actions.createPlayList(playListToCreate))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Home)
