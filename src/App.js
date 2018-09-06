@@ -16,7 +16,8 @@ class App extends Component {
   componentDidMount() {
       this.database = FireApp.database().ref();
       this.database.on('value', snap => {
-        console.log(snap)
+        console.log(Object.keys(snap.val()))
+        // Fix dis
       });
     }
 

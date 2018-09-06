@@ -9,12 +9,14 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 // Utility
 import { getUserIP } from '../../shared/utility';
+// Firebase
+import FireApp from '../../firebase-config/config';
 class Home extends Component {
 
     constructor() {
         super();
         getUserIP(ip => {
-            this.setState({authorId: ip});
+            this.setState({ authorId: ip });
         });
         this.state = {
             authorId: null,
@@ -30,7 +32,8 @@ class Home extends Component {
                         required: true
                     },
                     valid: false,
-                    touched: false
+                    touched: false,
+                    label: ''
                 },
                 authorName: {
                     elementType: 'input',
@@ -43,7 +46,8 @@ class Home extends Component {
                         required: true
                     },
                     valid: false,
-                    touched: false
+                    touched: false,
+                    label: ''
                 }
             },
             formIsValid: false
@@ -55,7 +59,8 @@ class Home extends Component {
         const updatedFormElement = updateObject(this.state.playListForm[inputIdentifier], {
             value: event.target.value,
             valid: checkValidity(event.target.value, this.state.playListForm[inputIdentifier].validation),
-            touched: true
+            touched: true,
+            label: checkValidity(event.target.value, this.state.playListForm[inputIdentifier].validation)? '' : 'Field Required'
         });
         const updatedPlayListForm = updateObject(this.state.playListForm, {
             [inputIdentifier]: updatedFormElement
@@ -70,7 +75,6 @@ class Home extends Component {
 
     onCreatePlayListHandler = (event) => {
         event.preventDefault();
-
         const playListToCreate = {
             playListName: this.state.playListForm.playListName.value,
             author: {
@@ -78,8 +82,24 @@ class Home extends Component {
                 id: this.state.authorId
             }
         }
-        console.log(playListToCreate)
-        this.props.onCreatePlaylist(playListToCreate)
+        FireApp.database().ref(playListToCreate.playListName).once('value')
+            .then(snapshot => {
+                if(!snapshot.exists()) {
+                    this.props.onCreatePlaylist(playListToCreate)
+                } else {
+                    this.setState(prevState => ({
+                        ...prevState,
+                        playListForm: {
+                            ...prevState.playListForm,
+                            playListName: {
+                                ...prevState.playListForm.playListName,
+                                label: 'This playlist name already exists..',
+                                valid: false
+                            }
+                        }
+                    }));
+                }
+            });
     }
 
     componentDidMount() {
@@ -105,6 +125,7 @@ class Home extends Component {
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched}
+                        label= {formElement.config.label}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
                 <button onClick={this.onCreatePlayListHandler} disabled={!this.state.formIsValid}>Create</button>
