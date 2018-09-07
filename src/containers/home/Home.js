@@ -60,7 +60,7 @@ class Home extends Component {
             value: event.target.value,
             valid: checkValidity(event.target.value, this.state.playListForm[inputIdentifier].validation),
             touched: true,
-            label: checkValidity(event.target.value, this.state.playListForm[inputIdentifier].validation)? '' : 'Field Required'
+            label: checkValidity(event.target.value, this.state.playListForm[inputIdentifier].validation) ? '' : 'Field Required'
         });
         const updatedPlayListForm = updateObject(this.state.playListForm, {
             [inputIdentifier]: updatedFormElement
@@ -84,8 +84,13 @@ class Home extends Component {
         }
         FireApp.database().ref(playListToCreate.playListName).once('value')
             .then(snapshot => {
-                if(!snapshot.exists()) {
-                    this.props.onCreatePlaylist(playListToCreate)
+                if (!snapshot.exists()) {
+                    this.props.onCreatePlaylist(playListToCreate);
+                    FireApp.database().ref(playListToCreate.playListName).on('value', snap => {
+                        if (snap.exists()) {
+                            this.props.history.replace('/playlist/' + playListToCreate.playListName)
+                        }
+                    });
                 } else {
                     this.setState(prevState => ({
                         ...prevState,
@@ -125,7 +130,7 @@ class Home extends Component {
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched}
-                        label= {formElement.config.label}
+                        label={formElement.config.label}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
                 <button onClick={this.onCreatePlayListHandler} disabled={!this.state.formIsValid}>Create</button>
@@ -134,7 +139,6 @@ class Home extends Component {
         return (
             <Auxiliar>
                 <canvas id="canvas"></canvas>
-                <div id="Home" style={{ backgroundColor: 'black' }} />
                 <div className={classes.Home}>
                     <h2 className={classes.Title}>Create your PlayList!</h2>
                     {form}

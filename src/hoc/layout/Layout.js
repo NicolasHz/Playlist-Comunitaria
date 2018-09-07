@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import VideoList from '../../components/VideoList/VideoList';
+import VideoForm from '../../components/VideoForm/VideoForm';
 import { withRouter } from 'react-router-dom';
 // Redux
 import { connect } from 'react-redux';
@@ -44,12 +45,14 @@ class Layout extends Component {
     }
 
     render() {
+        const addVideoForm = this.props.location.pathname !== '/home' ? <div className={classes.VideoForm}><VideoForm/></div> : null;
         const videoClasses = !this.props.currentVideoURL ? classes.blur : null;
         const indicator = !this.props.currentVideoURL ? (
             <div>
                 <p style={{fontSize: 22, color: 'white', textAlign: 'center'}}>Here you'll see the actual songs once you start adding them...</p>
             </div>
         ) : null;
+
         return (
             <div id="perspective" className={this.state.perspectiveClasses.join(' ')}>
                 <div className={classes.Container} onClick={this.hideMenuHandler}>
@@ -66,6 +69,7 @@ class Layout extends Component {
                         <VideoList playList={this.props.playList} />
                     </div>
                 </nav>
+                {addVideoForm}
             </div>
         )
     }

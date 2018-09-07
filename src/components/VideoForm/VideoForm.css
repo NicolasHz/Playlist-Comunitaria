@@ -1,0 +1,36 @@
+
+
+.VideoFormBtn {
+    width: 8em;
+    height: 4em;
+    border: none;
+    padding: 0.6em 1.2em;
+    background: #a9a9a9;
+    color: #fff;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-size: 1em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: block;
+    margin: 0 10px;
+    border-radius: 2px;
+    font-weight: 400;
+    outline: none;
+    font-size: 75%;
+    background: #ed8151;
+}
+
+.VideoFormBtn:disabled,
+.VideoFormBtn[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+@media screen and (min-width: 800px) {
+    form {
+        margin: 0 3% 0 57%;
+    }
+}

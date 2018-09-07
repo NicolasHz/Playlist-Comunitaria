@@ -163,6 +163,30 @@ html, body, Perspective {
 	transform: translateX(0) translateZ(0);
 }
 
+.VideoForm {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    transform-style: preserve-3d;
+	transition:  all 0.4s ease-in-out;
+	top: 0;
+	transform: translateY(50%);
+}
+
+.EffectRotateLeft  .VideoForm {
+	opacity: 0;
+	transform: translateX(0) translateZ(500px);
+    transition: transform all 0.4s, opacity 0.4s;
+}
+
+.EffectRotateLeft.animate  .VideoForm {
+	opacity: 1;
+	transform: translateX(0) translateZ(0);
+}
+
 .EffectRotateLeft.animate .OuterNav span:nth-child(2) {
 	transition-delay: 0.04s;
 }

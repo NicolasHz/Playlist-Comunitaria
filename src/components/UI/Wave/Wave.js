@@ -20,7 +20,7 @@ export function init() {
 function update(array) {
     // body...
     // ctx.clearRect(0, 0, cvs.width, cvs.height);
-    var fill = window.getComputedStyle(document.querySelector("#Home"), null).getPropertyValue("background-color");
+    var fill = window.getComputedStyle(document.querySelector("#HookCanvas"), null).getPropertyValue("background-color");
     ctx.fillStyle = fill;
     ctx.globalCompositeOperation = "source-over";
     ctx.fillRect(0, 0, cvs.width, cvs.height);

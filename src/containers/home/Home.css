@@ -23,7 +23,7 @@ canvas {
     margin: 0 10%;
 }
 
-form button {
+.Home form button {
     width: 8em;
     height: 3em;
     border: none;
@@ -44,8 +44,8 @@ form button {
     background: #ed8151;
 }
 
-button:disabled,
-button[disabled]{
+.Home form button:disabled,
+.Home form button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;

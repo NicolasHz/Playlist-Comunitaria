@@ -25,6 +25,7 @@ class App extends Component {
     const redirect = (this.props.location.pathname === '/home'? null : <Redirect to="/home" />)
     return (
       <Layout>
+        <div id="HookCanvas" style={{ backgroundColor: 'black' }} />
         <Switch>
           <Route path="/playlist/:playListID" exact component={Reproducer} />
           <Route path="/home" exact component={Home} />
