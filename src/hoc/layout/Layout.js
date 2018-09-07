@@ -49,7 +49,7 @@ class Layout extends Component {
         const videoClasses = !this.props.currentVideoURL ? classes.blur : null;
         const indicator = !this.props.currentVideoURL ? (
             <div>
-                <p style={{fontSize: 22, color: 'white', textAlign: 'center'}}>Here you'll see the actual songs once you start adding them...</p>
+                <p className={classes.Indicator}>Here you'll see the actual songs once you start adding them...</p>
             </div>
         ) : null;
 

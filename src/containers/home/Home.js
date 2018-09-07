@@ -16,6 +16,7 @@ class Home extends Component {
     constructor() {
         super();
         getUserIP(ip => {
+            console.log(ip)
             this.setState({ authorId: ip });
         });
         this.state = {
@@ -111,6 +112,10 @@ class Home extends Component {
         Waves.init();
     }
 
+    componentWillUnmount() {
+        Waves.stop();
+    }
+
     render() {
         const formElementsArray = [];
         for (let key in this.state.playListForm) {
@@ -138,6 +143,7 @@ class Home extends Component {
         );
         return (
             <Auxiliar>
+                <div id="HookCanvas" style={{ backgroundColor: 'black' }} />
                 <canvas id="canvas"></canvas>
                 <div className={classes.Home}>
                     <h2 className={classes.Title}>Create your PlayList!</h2>

@@ -151,16 +151,25 @@ html, body, Perspective {
 	bottom: 25%;
 }
 
-.EffectRotateLeft .OuterNav span {
+.EffectRotateLeft .OuterNav span,
+.EffectRotateLeft .OuterNav .Indicator {
 	opacity: 0;
 	cursor: pointer;
 	transform: translateX(350px) translateZ(-1000px);
     transition: transform all 0.4s, opacity 0.4s;
 }
 
-.EffectRotateLeft.animate .OuterNav span {
+.EffectRotateLeft.animate .OuterNav span,
+.EffectRotateLeft.animate .OuterNav .Indicator {
 	opacity: 1;
 	transform: translateX(0) translateZ(0);
+}
+
+.Indicator {
+	font-size: 22px;
+	color: white;
+	text-align: center;
+	transition: all 0.4s ease-in-out;
 }
 
 .VideoForm {

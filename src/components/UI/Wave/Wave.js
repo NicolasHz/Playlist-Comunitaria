@@ -1,11 +1,13 @@
 var cvs, ctx;
 //var nodes = 5;
+var isRendering = false;
 var waves = [];
 var waveHeight = window.innerHeight / 2;
 var colours = ["#fc0000", "#00fa00", "#0000e3"]; // #fcfae3
 
 // Initiator function
 export function init() {
+    waves = [];
     cvs = document.getElementById("canvas");
     ctx = cvs.getContext("2d");
     resizeCanvas(cvs);
@@ -13,11 +15,18 @@ export function init() {
     for (var i = 0; i < 3; i++) {
         var temp = new wave(colours[i], 1, 5);
     }
+    if (!isRendering){
+        isRendering = true;
+        update();
+    }
+}
 
-    update();
+export function stop(){
+    isRendering = false;
 }
 
 function update(array) {
+    if (!isRendering) { return }
     // body...
     // ctx.clearRect(0, 0, cvs.width, cvs.height);
     var fill = window.getComputedStyle(document.querySelector("#HookCanvas"), null).getPropertyValue("background-color");
